@@ -2,6 +2,7 @@
 
 A Task Management Tool written in Python using the Django Web Framework
 
-Functionality
+Current functionality
 - User Login
+- User Logout
 - User Sign up
