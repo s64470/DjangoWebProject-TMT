@@ -1,0 +1,22 @@
+<!-- signup template -->
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h1>Sign up</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Signup</button>
+    <a href="{% url 'login' %}">Already have account?</a>
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% load static %}
+
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

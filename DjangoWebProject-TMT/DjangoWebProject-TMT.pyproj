@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
+    <Compile Include="app\templates\app\forms.py" />
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
@@ -58,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\signup.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
