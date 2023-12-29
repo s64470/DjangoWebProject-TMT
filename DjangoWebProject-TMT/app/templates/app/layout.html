@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - Task Management Application</title>
+
     {% load static %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
@@ -15,19 +17,24 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="/" class="navbar-brand">Task Management Tool</a>
+                <!--<a href="/" class="navbar-brand">Task Management Tool</a>-->
+                <a href="/" class="glyphicon glyphicon-home btn-lg" aria-hidden="true" style="color:white"></a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                </ul>
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li><a href="{% url 'home' %}">Home</a></li>-->
+                <!--</ul>-->
                 {% include 'app/loginpartial.html' %}
             </div>
         </div>
     </div>
     
     <div class="container body-content">
-        {% block content %}{% endblock %}
+
+        {% block content %}
+        
+        {% endblock %}
+
         <hr/>
         <footer>
             <p>&copy; {{ year }} - Django Task Management Application</p>
@@ -38,7 +45,9 @@
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    
+    {% endblock %}
 
 </body>
 </html>
