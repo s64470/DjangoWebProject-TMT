@@ -58,6 +58,7 @@
     <Folder Include="DjangoWebProject_TMT\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\signup.html" />
     <Content Include="requirements.txt" />
