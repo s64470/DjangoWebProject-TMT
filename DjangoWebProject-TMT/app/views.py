@@ -9,6 +9,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 
+# home page
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -21,6 +22,7 @@ def home(request):
         }
     )
 
+# contact page
 def contact(request):
     """Renders the contact page."""
     assert isinstance(request, HttpRequest)
@@ -34,6 +36,7 @@ def contact(request):
         }
     )
 
+# about page
 def about(request):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
