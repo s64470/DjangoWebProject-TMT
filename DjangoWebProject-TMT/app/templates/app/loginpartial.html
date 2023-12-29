@@ -1,3 +1,4 @@
+<!-- login partial template -->
 {% if user.is_authenticated %}
 <form id="logoutForm" action="/logout/" method="post" class="navbar-right">
     {% csrf_token %}
@@ -11,6 +12,7 @@
 
 <ul class="nav navbar-nav navbar-right">
     <li><a href="{% url 'login' %}">Log in</a></li>
+    <li><a href="{% url 'signup' %}">Sign up</a></li>
 </ul>
 
 {% endif %}
