@@ -2,6 +2,9 @@
 Definition of views.
 """
 
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
@@ -43,3 +46,14 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+# sign up page
+def user_signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'app/signup.html', {'form': form})
