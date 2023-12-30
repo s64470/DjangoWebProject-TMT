@@ -52,7 +52,7 @@ def home(request):
 
 # sign up page
 def user_signup(request):
-    """Renders the about page."""
+    """Renders the signup page."""
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
