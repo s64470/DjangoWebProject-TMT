@@ -10,6 +10,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 
 
+# path to .html files
 urlpatterns = [
     path('', views.home, name='home'),
     # path('contact/', views.contact, name='contact'),
@@ -29,4 +30,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
     path('signup/', views.user_signup, name='signup'),
+    path('task/', views.TaskList.as_view(), name='task'),
+    path('task/<int:pk>/', views.TaskDetail.as_view()),
 ]
