@@ -56,7 +56,7 @@ def home(request):
 #         }
 #     )
 
-# sign up page
+# signup page
 def user_signup(request):
     """Renders the signup page."""
     if request.method == 'POST':
@@ -71,7 +71,7 @@ def user_signup(request):
         'app/signup.html',
         {
             'title':'User registration',
-            'form': form,
+            'form':form,
             'year':datetime.now().year,
         }
     )

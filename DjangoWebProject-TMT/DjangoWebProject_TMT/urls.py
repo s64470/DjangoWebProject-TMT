@@ -30,6 +30,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
     path('signup/', views.user_signup, name='signup'),
-    path('task/', views.TaskList.as_view(), name='task'),
-    path('task/<int:pk>/', views.TaskDetail.as_view()),
+    path('task/', views.TaskList.as_view(), name='tasks'),
+    path('task/<int:pk>/', views.TaskDetail.as_view(), name='task'),
 ]
