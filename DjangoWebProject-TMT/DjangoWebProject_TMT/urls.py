@@ -32,4 +32,6 @@ urlpatterns = [
     path('signup/', views.user_signup, name='signup'),
     path('task/', views.TaskList.as_view(), name='tasks'),
     path('task/<int:pk>/', views.TaskDetail.as_view(), name='task'),
+    path('task-create/', views.TaskCreate.as_view(), name='task-create'),
+    path('task-update/<int:pk>/', views.TaskUpdate.as_view(), name='task-update'),
 ]
