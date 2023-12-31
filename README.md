@@ -8,3 +8,4 @@ Current functionality
 - User Sign up
 - Create Task
 - Update Task
+- Delete Task
