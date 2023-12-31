@@ -23,7 +23,9 @@
             <div class="navbar-collapse collapse">
                 <!-- Zu Testzwecken: <ul>-Tag inkl. <li>-Tag später entfernen -->
                 <ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
                     <li><a href="{% url 'tasks' %}">Task</a></li>
+                {% endif %}
                 </ul>
                 <!--<ul class="nav navbar-nav">-->
                     <!--<li><a href="{% url 'home' %}">Home</a></li>-->
