@@ -6,3 +6,5 @@ Current functionality
 - User Login
 - User Logout
 - User Sign up
+- Create Task
+- Update Task
