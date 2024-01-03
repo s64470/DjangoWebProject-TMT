@@ -11,6 +11,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+
+    <style>
+        body{
+            /*background-color: aqua;*/
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +27,6 @@
                 <a href="/" class="glyphicon glyphicon-home btn-lg" aria-hidden="true" style="color:white"></a>
             </div>
             <div class="navbar-collapse collapse">
-                <!-- Zu Testzwecken: <ul>-Tag inkl. <li>-Tag später entfernen -->
                 <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'tasks' %}">Task</a></li>

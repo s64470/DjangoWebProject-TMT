@@ -15,9 +15,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
 from django.contrib.auth.views import LoginView, LogoutView
-
 from .models import Task
 
 
@@ -34,34 +32,6 @@ def home(request):
         }
     )
 
-
-# # contact page
-# def contact(request):
-#     """Renders the contact page."""
-#     assert isinstance(request, HttpRequest)
-#     return render(
-#         request,
-#         'app/contact.html',
-#         {
-#             'title':'Contact',
-#             'message':'Your contact page.',
-#             'year':datetime.now().year,
-#         }
-#     )
-
-# # about page
-# def about(request):
-#     """Renders the about page."""
-#     assert isinstance(request, HttpRequest)
-#     return render(
-#         request,
-#         'app/about.html',
-#         {
-#             'title':'About',
-#             'message':'Your application description page.',
-#             'year':datetime.now().year,
-#         }
-#     )
 
 # signup page
 def user_signup(request):
