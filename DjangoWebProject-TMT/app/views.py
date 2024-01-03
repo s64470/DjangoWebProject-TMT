@@ -67,7 +67,8 @@ class TaskList(LoginRequiredMixin, ListView):
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(title__startswith=search_input)
+            context['tasks'] = context['tasks'].filter(
+                title__startswith=search_input)
 
         context['search_input'] = search_input
 
@@ -100,6 +101,7 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
+
 
 """
 class CustomLoginView(LoginView):

@@ -1,23 +1,17 @@
 {% extends 'app/layout.html' %}
-
 {% block content %}
-
 {% if request.user.is_authenticated %}
-<p>{{ request.user }}</p>
-<a href="{% url 'logout' %}">Logout</a>
+<!--<p>{{ request.user }}</p>-->
+<!--<a href="{% url 'logout' %}">Logout</a>-->
 {% else %}
 <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
 {% endif %}
-
 <hr>
 <h2>To do List</h2>
 <a href="{% url 'task-create' %}">Add Task</a>
 <table>
     <tr>
         <th>Items</th>
-        <th></th>
-        <th></th>
-        <th></th>
     </tr>
     {% for task in tasks %}
     <tr>
@@ -30,5 +24,4 @@
     <h2>No items in list</h2>
     {% endfor %}
 </table>
-
 {% endblock content %}
