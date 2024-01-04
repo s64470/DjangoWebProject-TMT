@@ -63,6 +63,8 @@
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\signup.html" />
     <Content Include="app\templates\app\task.html" />
+    <Content Include="app\templates\app\task_confirm_delete.html" />
+    <Content Include="app\templates\app\task_form.html" />
     <Content Include="app\templates\app\task_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

@@ -9,3 +9,4 @@ Current functionality
 - Create Task
 - Update Task
 - Delete Task
+- Search
