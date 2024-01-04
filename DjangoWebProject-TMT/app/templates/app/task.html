@@ -1,7 +1,7 @@
 {% extends 'app/layout.html' %}
 {% block content %}
 <hr />
-<p><a href="{% url 'tasks' %}">Back to tasks</a></p>
+<p><a href="{% url 'tasks' %}">&#8592; Back</a></p>
 <h2>Task: {{ task.title }}</h2>
 <p>Description: {{ task.description }}</p>
 <p>Creation Date: {{ task.create }}</p>
