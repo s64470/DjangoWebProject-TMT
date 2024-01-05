@@ -29,16 +29,20 @@
         <div class="task-title">
             <div class="task-complete-icon"></div>
             <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
-            <a class="fa fa-eye" id="eye" href="{% url 'task' task.id %}"></a>
         </div>
-        <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+        <div class="delete-link">
+            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+        </div>
         {% else %}
         <div class="task-title">
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'task-update' task.id %}">{{ task }}</a>
-            <a class="fa fa-eye" id="eye" href="{% url 'task' task.id %}"></a>
         </div>
-        <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+        <div class="delete-link">
+            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+        </div>
         {% endif %}
     </div>
     {% empty %}
