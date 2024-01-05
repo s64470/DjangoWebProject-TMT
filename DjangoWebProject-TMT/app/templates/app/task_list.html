@@ -12,7 +12,7 @@
     {% endif %}
 </div>
 <hr>
-<h2>To do List</h2>
+<!--<h2>To do List</h2>-->
 <!--<a href="{% url 'task-create' %}">Add Task</a>-->
 <!-- Search form -->
 <div id="search-add-wrapper">
@@ -27,15 +27,16 @@
     <div class="task-wrapper">
         {% if task.complete %}
         <div class="task-title">
-            <div class="task-complete-icon">
-                <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
-            </div>
+            <div class="task-complete-icon"></div>
+            <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
+            <a class="fa fa-eye" id="eye" href="{% url 'task' task.id %}"></a>
         </div>
         <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
         {% else %}
         <div class="task-title">
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'task-update' task.id %}">{{ task }}</a>
+            <a class="fa fa-eye" id="eye" href="{% url 'task' task.id %}"></a>
         </div>
         <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
         {% endif %}
