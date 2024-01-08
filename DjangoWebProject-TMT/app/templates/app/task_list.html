@@ -27,6 +27,7 @@
     <div class="task-wrapper">
         {% if task.complete %}
         <div class="task-title">
+            <p>Priority: {{ task.priority }}</p>
             <div class="task-complete-icon"></div>
             <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
         </div>

@@ -3,6 +3,7 @@
 <hr />
 <p><a href="{% url 'tasks' %}">&#8592; Back</a></p>
 <h2>Task: {{ task.title }}</h2>
+<p>Priority: {{ task.priority }}</p>
 <p>Description: {{ task.description }}</p>
 <p>Creation Date: {{ task.create }}</p>
 <p>Last updated: {{ task.update }}</p>
