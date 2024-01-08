@@ -64,18 +64,21 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
-        context['count'] = context['tasks'].filter(complete=False).count()
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(
-                title__startswith=search_input)
+            context['tasks'] = context['tasks'].filter(title__startswith=search_input)
 
         context['search_input'] = search_input
+        context['count'] = context['tasks'].filter(complete=False).count()
+
+        dates = context['tasks'].dates('due_date', 'day')
+        tasks_by_date = {date: context['tasks'].filter(due_date=date).order_by('-priority') for date in dates}
+        context['tasks_by_date'] = tasks_by_date
 
         return context
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user).order_by('-due_date')
+        return Task.objects.filter(user=self.request.user).order_by('-due_date', '-priority')
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
@@ -84,7 +87,6 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
-    model = Task
     form_class = TaskForm
     template_name = 'app/task_form.html'
     success_url = reverse_lazy('tasks')
