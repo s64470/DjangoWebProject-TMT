@@ -17,6 +17,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from .models import Task
+from .forms import TaskForm
 
 
 # home page
@@ -73,7 +74,8 @@ class TaskList(LoginRequiredMixin, ListView):
         context['search_input'] = search_input
 
         return context
-
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user).order_by('-due_date')
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
@@ -83,7 +85,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'complete', 'priority']
+    form_class = TaskForm
+    template_name = 'app/task_form.html'
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
@@ -93,7 +96,8 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'complete', 'priority']
+    form_class = TaskForm
+    template_name = 'app/task_form.html'
     success_url = reverse_lazy('tasks')
 
 
