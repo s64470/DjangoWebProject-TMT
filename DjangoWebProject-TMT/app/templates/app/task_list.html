@@ -12,8 +12,6 @@
     {% endif %}
 </div>
 <hr>
-<!--<h2>To do List</h2>-->
-<!--<a href="{% url 'task-create' %}">Add Task</a>-->
 <!-- Search form -->
 <div id="search-add-wrapper">
     <form method="GET" style="margin-top: 20px; display: flex;">
@@ -28,22 +26,21 @@
     {% for task in tasks %}
     <div class="task-wrapper">
         {% if task.complete %}
-        <div class="task-title">
-            <div class="task-complete-icon"></div>
-            <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
-            <strike>Due: {{ task.due_date }}</strike>
-        </div>
+        <!--<div class="task-title">-->
+        <div class="task-complete-icon"></div>
+        <i><s><a href="{% url 'task-update' task.id %}" style="float:left;">{{ task }}</a></s></i>
+        <!--</div>-->
         <div class="delete-link">
             <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
             <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
         </div>
         {% else %}
-        <div class="task-title">
-            <div class="task-incomplete-icon"></div>
-            <a href="{% url 'task-update' task.id %}">{{ task }}</a>
-        </div>
-        <p class="task-priority">Priority: {{ task.get_priority_display }}</p>
-        <span style="float:right;" class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span>
+        <!--<div class="task-title">-->
+        <div class="task-incomplete-icon"></div>
+        <a href="{% url 'task-update' task.id %}">{{ task }}</a>
+        <!--</div>-->
+        <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
+        <span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span>
         <div class="delete-link">
             <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
             <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
