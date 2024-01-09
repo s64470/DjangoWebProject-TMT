@@ -6,8 +6,7 @@ from datetime import datetime
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
-from django.urls import path, include
-from django.views.generic.base import TemplateView
+from django.urls import path
 
 # path to .html files
 urlpatterns = [
