@@ -31,6 +31,7 @@
         <div class="task-title">
             <div class="task-complete-icon"></div>
             <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
+            <strike>Due: {{ task.due_date }}</strike>
         </div>
         <div class="delete-link">
             <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
