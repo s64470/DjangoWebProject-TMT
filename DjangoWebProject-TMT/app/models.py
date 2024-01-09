@@ -15,8 +15,9 @@ class Task(models.Model):
         ('H', 'High'),
         ('F', 'Fast Lane'),
     ]
-    due_date = models.DateField(null=True, blank=True)
 
+    due_date = models.DateField(
+        auto_now_add=False, auto_now=False, blank=True, null=True)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
