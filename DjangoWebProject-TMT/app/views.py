@@ -15,7 +15,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskForm
-from django.utils import timezone
 
 
 # home page
