@@ -24,6 +24,8 @@
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
                         <input type="submit" value="Log in" class="btn btn-default" />
+                        &emsp;
+                        <a href="{% url 'password_reset_form' %}">Forgot password?</a>
                     </div>
                 </div>
                 {% if form.errors %}
