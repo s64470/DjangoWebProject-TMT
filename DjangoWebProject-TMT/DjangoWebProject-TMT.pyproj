@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />
+    <Content Include="app\static\app\content\customcss.css" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\password_reset_form.html" />
     <Content Include="app\templates\app\password_reset_complete.html" />
