@@ -3,7 +3,6 @@ Definition of views.
 """
 
 from asyncio import Task
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from datetime import datetime
@@ -13,6 +12,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from app.templates.app.forms import RegisterUserForm
 from .models import Task
 from .forms import TaskForm
 
@@ -35,12 +35,12 @@ def home(request):
 def user_signup(request):
     """Renders the signup page."""
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
     else:
-        form = UserCreationForm()
+        form = RegisterUserForm()
     return render(
         request,
         'app/signup.html',
