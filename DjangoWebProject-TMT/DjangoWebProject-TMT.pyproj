@@ -71,6 +71,7 @@
     <Content Include="app\templates\app\task_confirm_delete.html" />
     <Content Include="app\templates\app\task_form.html" />
     <Content Include="app\templates\app\task_list.html" />
+    <Content Include=".htaccess" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
