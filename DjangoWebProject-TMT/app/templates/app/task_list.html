@@ -35,8 +35,6 @@ function notifyTasks(tasks) {
     let now = new Date();
     let diffTime = Math.abs(dueDate - now);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    console.log(`Due date for task ${task.fields.title}: ${task.fields.due_date}`);
-    console.log(`Days until due date: ${diffDays}`);
     if (diffDays <= 2) {
       var notification = new Notification(`Task ${task.fields.title} is due in ${diffDays} days`);
     }
