@@ -9,6 +9,7 @@ from app import forms, views
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
+
 # path to .html files
 urlpatterns = [
     path('', views.home, name='home'),
@@ -40,4 +41,5 @@ urlpatterns = [
          auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
+    path('task-json/', views.task_json, name='task-json'),
 ]

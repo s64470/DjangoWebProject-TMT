@@ -15,7 +15,9 @@ from django.urls import reverse_lazy
 from app.templates.app.forms import RegisterUserForm
 from .models import Task
 from .forms import TaskForm
-
+from django.http import JsonResponse
+from django.core import serializers
+import json
 
 # home page
 def home(request):
@@ -30,7 +32,18 @@ def home(request):
         }
     )
 
+def task_json(request):
+    # Query the database for all tasks
+    tasks = Task.objects.all()
 
+    # Serialize the tasks into JSON format
+    task_list = serializers.serialize('json', tasks)
+
+    # Convert the JSON string into a list
+    task_list = json.loads(task_list)
+
+    # Return the tasks in a JsonResponse
+    return JsonResponse(task_list, safe=False)
 # signup page
 def user_signup(request):
     """Renders the signup page."""
