@@ -30,10 +30,13 @@
 .incompleteicon,
 .taskupdate,
 .taskpriority,
-.tasktimer,
-.deletelink {
+.tasktimer {
     text-align: left;
     word-wrap: break-word;
+}
+
+.deletelink {
+    text-align: right;
 }
 
 .task-title a {
