@@ -10,10 +10,30 @@
 .task-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 20px;
     background-color: #fff;
     border-top: 1px solid rgb(226, 226, 226);
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.taskitem {
+    max-width: 100%;
+}
+
+    .taskitem td {
+        width: 300px;
+    }
+
+.completeicon,
+.incompleteicon,
+.taskupdate,
+.taskpriority,
+.tasktimer,
+.deletelink {
+    text-align: left;
+    word-wrap: break-word;
 }
 
 .task-title a {

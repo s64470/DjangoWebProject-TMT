@@ -69,25 +69,34 @@ function notifyTasks(tasks) {
     {% for task in tasks %}
     <div class="task-wrapper">
         {% if task.complete %}
-        <!--<div class="task-title">-->
-        <div class="task-complete-icon"></div>
-        <i><s><a href="{% url 'task-update' task.id %}" style="float:left;">{{ task }}</a></s></i>
-        <!--</div>-->
-        <div class="delete-link">
-            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
-            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
-        </div>
+        <table class="taskitem">
+            <tr>
+                <td class="completeicon"><div class="task-complete-icon"></div></td>
+                <td class="taskupdate"><i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i></td>
+                <td class="deletelink">
+                    <div class="delete-link">
+                        <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+                        <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
         {% else %}
-        <!--<div class="task-title">-->
-        <div class="task-incomplete-icon"></div>
-        <a href="{% url 'task-update' task.id %}">{{ task }}</a>
-        <!--</div>-->
-        <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
-        <span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span>
-        <div class="delete-link">
-            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
-            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
-        </div>
+        <table class="taskitem">
+            <tr>
+                <td class="incompleteicon"><div class="task-incomplete-icon"></div></td>
+                <td class="taskupdate"><a href="{% url 'task-update' task.id %}">{{ task }}</a></td>
+                <td class="taskpriority"><span class="task-priority">Priority: {{ task.get_priority_display }}</span></td>
+                <td class="tasktimer"><span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span></td>
+                <td class="deletelink">
+                    <div class="delete-link">
+                        <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+                        <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+               
         {% endif %}
     </div>
     {% endfor %}
