@@ -1,48 +1,48 @@
 {% extends 'app/layout.html' %}
 {% block content %}
- <script>
- // Fetch tasks data from the server
-fetch('/task-json/')
-  .then(response => response.json())
-  .then(tasks => {
-    console.log(tasks);
-    // Check if the browser supports notifications
-    if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification");
-    }
+<script>
+    // Fetch tasks data from the server
+    fetch('/task-json/')
+        .then(response => response.json())
+        .then(tasks => {
+            console.log(tasks);
+            // Check if the browser supports notifications
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            }
 
-    // Let's check whether notification permissions have already been granted
-    else if (Notification.permission === "granted") {
-      // If it's okay let's create a notification
-      notifyTasks(tasks);
-    }
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                notifyTasks(tasks);
+            }
 
-    // Otherwise, we need to ask the user for permission
-    else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then(function (permission) {
-        // If the user accepts, let's create a notification
-        if (permission === "granted") {
-          notifyTasks(tasks);
-        }
-      });
-    }
-  });
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                        notifyTasks(tasks);
+                    }
+                });
+            }
+        });
 
-function notifyTasks(tasks) {
-  tasks.forEach(task => {
-    // Check if the due date is within 2 days
-    let dueDate = new Date(task.fields.due_date);
-    let now = new Date();
-    let diffTime = Math.abs(dueDate - now);
-    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    console.log(`Due date for task ${task.fields.title}: ${task.fields.due_date}`);
-    console.log(`Days until due date: ${diffDays}`);
-    if (diffDays <= 2) {
-      var notification = new Notification(`Task ${task.fields.title} is due in ${diffDays} days`);
+    function notifyTasks(tasks) {
+        tasks.forEach(task => {
+            // Check if the due date is within 2 days
+            let dueDate = new Date(task.fields.due_date);
+            let now = new Date();
+            let diffTime = Math.abs(dueDate - now);
+            let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            console.log(`Due date for task ${task.fields.title}: ${task.fields.due_date}`);
+            console.log(`Days until due date: ${diffDays}`);
+            if (diffDays <= 2) {
+                var notification = new Notification(`Task ${task.fields.title} is due in ${diffDays} days`);
+            }
+        });
     }
-  });
-}
- </script>
+</script>
 <div class="header-bar">
     <div>
         <h3 style="margin:0">You have <i>{{ count }}</i> incomplete task{{ count|pluralize:"s" }}.</h3>
@@ -69,25 +69,37 @@ function notifyTasks(tasks) {
     {% for task in tasks %}
     <div class="task-wrapper">
         {% if task.complete %}
-        <!--<div class="task-title">-->
-        <div class="task-complete-icon"></div>
-        <i><s><a href="{% url 'task-update' task.id %}" style="float:left;">{{ task }}</a></s></i>
-        <!--</div>-->
-        <div class="delete-link">
-            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
-            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
-        </div>
+        <!-- Complete Tasks -->
+        <table class="taskitem">
+            <tr>
+                <td class="completeicon"><div class="task-complete-icon"></div></td>
+                <td class="taskupdate"><i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i></td>
+                <td class="taskpriority"></td> <!-- td spacer -->
+                <td class="tasktimer"></td> <!-- td spacer -->
+                <td class="deletelink">
+                    <div class="delete-link">
+                        <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+                        <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
         {% else %}
-        <!--<div class="task-title">-->
-        <div class="task-incomplete-icon"></div>
-        <a href="{% url 'task-update' task.id %}">{{ task }}</a>
-        <!--</div>-->
-        <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
-        <span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span>
-        <div class="delete-link">
-            <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
-            <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
-        </div>
+        <!-- Incomplete Tasks -->
+        <table class="taskitem">
+            <tr>
+                <td class="incompleteicon"><div class="task-incomplete-icon"></div></td>
+                <td class="taskupdate"><a href="{% url 'task-update' task.id %}">{{ task }}</a></td>
+                <td class="taskpriority"><span class="task-priority">Priority: {{ task.get_priority_display }}</span></td>
+                <td class="tasktimer"><span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span></td>
+                <td class="deletelink">
+                    <div class="delete-link">
+                        <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+                        <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
         {% endif %}
     </div>
     {% endfor %}
