@@ -70,38 +70,56 @@
         <!-- Complete Tasks -->
         <table>
             <tr>
+                <!-- Task icon -->
                 <td style="text-align: left;">
                     <div class="task-complete-icon"></div>
                 </td>
+                <!-- Task name -->
                 <td style="text-align: left; max-width: 20em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     <i><s><a href="{% url 'task-update' task.id %}">{{ task }}</a></s></i>
                 </td>
-                <td style="width: 300px;"></td> <!-- td spacer -->
-                <td style="width: 300px;"></td> <!-- td spacer -->
-                <td style="width: 600px; text-align: right;">
-                    <div class="delete-link">
-                        <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
-                        <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
-                    </div>
-                </td>
+            <tr>
+                <td style="width: 20em;"></td>
+            </tr>
+            <!-- Task priority (empty space) -->
+            <td style="width: 300px;"></td> <!-- td space -->
+            <!-- Task due date (empty space) -->
+            <td style="width: 300px;"></td> <!-- td space -->
+            <!-- Task view, delete icon -->
+            <td style="width: 600px; text-align: right;">
+                <div class="delete-link">
+                    <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
+                    <a href="{% url 'task-delete' task.id %}" style="text-decoration: none">&#215;</a>
+                </div>
+            </td>
             </tr>
         </table>
         {% else %}
         <!-- Incomplete Tasks -->
         <table>
             <tr>
+                <!-- Task icon -->
                 <td style="text-align: left;">
                     <div class="task-incomplete-icon"></div>
                 </td>
+                <!-- Task name -->
                 <td style="text-align: left; max-width: 20em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     <a href="{% url 'task-update' task.id %}">{{ task }}</a>
                 </td>
-                <td style="width: 300px; text-align: left; word-wrap: break-word;">
+            </tr>
+            <tr>
+                <td style="width: 20em;"></td>
+            </tr>
+            <tr>
+                <!-- Task priority -->
+                <td style="text-align: left; word-wrap: break-word; padding-left: 5em;">
                     <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
                 </td>
-                <td style="width: 300px; text-align: left; word-wrap: break-word;">
+                <!-- Task due date -->
+                <td style="width: 300px; text-align: left; word-wrap: break-word; padding-left: 0em;">
                     <span class="timer"><b>Due: </b>{{ task.due_date|timeuntil }}</span>
                 </td>
+                <!-- Task view, delete icon -->
                 <td style="width: 600px; text-align: right;">
                     <div class="delete-link">
                         <a class="fa fa-eye" href="{% url 'task' task.id %}" style="text-decoration: none"></a>
