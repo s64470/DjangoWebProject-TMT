@@ -18,23 +18,6 @@
     flex-wrap: nowrap;
 }
 
-.taskitem {
-    max-width: 100%;
-}
-
-    .taskitem td {
-        width: 300px;
-    }
-
-.completeicon,
-.incompleteicon,
-.taskupdate,
-.taskpriority,
-.tasktimer {
-    text-align: left;
-    word-wrap: break-word;
-}
-
 .deletelink {
     text-align: right;
 }
