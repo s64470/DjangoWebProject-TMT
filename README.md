@@ -11,3 +11,6 @@ Current functionality
 - Update Task
 - Delete Task
 - Search
+- Taskpriority
+- Task Duedate
+- Notifications
