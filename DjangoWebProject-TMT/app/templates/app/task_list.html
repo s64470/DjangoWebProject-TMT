@@ -14,7 +14,10 @@
             // Let's check whether notification permissions have already been granted
             else if (Notification.permission === "granted") {
                 // If it's okay let's create a notification
-                notifyTasks(tasks);
+                if(!localStorage.getItem('notification')){
+                    notifyTasks(tasks);
+                    localStorage.setItem('notification', 'true');
+                }
             }
 
             // Otherwise, we need to ask the user for permission
@@ -23,6 +26,7 @@
                     // If the user accepts, let's create a notification
                     if (permission === "granted") {
                         notifyTasks(tasks);
+                        localStorage.setItem('notification', 'true');
                     }
                 });
             }
@@ -40,6 +44,16 @@
             }
         });
     }
+
+    // Add event listener for logout button
+    window.addEventListener('load', function() {
+        var logoutForm = document.getElementById('logoutForm');
+        if (logoutForm) {
+            logoutForm.addEventListener('click', function() {
+                localStorage.removeItem('notification');
+            });
+        }
+    });
 </script>
 <div class="header-bar">
     <div>
