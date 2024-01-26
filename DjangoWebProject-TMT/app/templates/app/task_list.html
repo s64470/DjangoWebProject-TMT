@@ -14,9 +14,9 @@
             // Let's check whether notification permissions have already been granted
             else if (Notification.permission === "granted") {
                 // If it's okay let's create a notification
-                if(!localStorage.getItem('notification')){
+                if(!localStorage.getItem('notified')){
                     notifyTasks(tasks);
-                    localStorage.setItem('notification', 'true');
+                    localStorage.setItem('notified', 'true');
                 }
             }
 
@@ -26,7 +26,7 @@
                     // If the user accepts, let's create a notification
                     if (permission === "granted") {
                         notifyTasks(tasks);
-                        localStorage.setItem('notification', 'true');
+                        localStorage.setItem('notified', 'true');
                     }
                 });
             }
@@ -50,7 +50,8 @@
         var logoutForm = document.getElementById('logoutForm');
         if (logoutForm) {
             logoutForm.addEventListener('click', function() {
-                localStorage.removeItem('notification');
+                // Clear the 'notified' flag from local storage when the user logs out
+                localStorage.removeItem('notified');
             });
         }
     });
