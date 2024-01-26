@@ -34,7 +34,7 @@ def home(request):
 
 def task_json(request):
     # Query the database for all tasks
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
 
     # Serialize the tasks into JSON format
     task_list = serializers.serialize('json', tasks)

@@ -1,7 +1,7 @@
 {% extends 'app/layout.html' %}
 {% block content %}
 <script>
-    // Fetch tasks data from the server
+    // Fetch tasks data from the server for the logged in user
     fetch('/task-json/')
         .then(response => response.json())
         .then(tasks => {
