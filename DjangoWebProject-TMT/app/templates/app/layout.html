@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/customcss.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap4.min.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 <body>
@@ -58,8 +58,8 @@
             <p>&copy; {{ year }} - Django Task Management Application</p>
         </footer>
     </div>
-    <script src="{% static 'app/scripts/jquery-3.5.1.slim.min.js' %}"></script>
-    <script src="{% static 'app/scripts/bootstrap4.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
     {% block scripts %}
     {% endblock %}
