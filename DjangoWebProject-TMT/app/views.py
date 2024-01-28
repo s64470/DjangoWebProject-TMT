@@ -105,7 +105,6 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user).order_by('-due_date', '-priority')
 
-
 class TaskBoardView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
