@@ -1,11 +1,18 @@
 {% extends 'app/layout.html' %}
 {% block content %}
-<hr />
-<p><a href="{% url 'tasks' %}">&#8592; Back</a></p>
-<h2>Task: {{ task.title }}</h2>
-<p>Priority: {{ task.priority }}</p>
-<p>Description: {{ task.description }}</p>
-<p>Creation Date: {{ task.create }}</p>
-<p>Last updated: {{ task.update }}</p>
-<p>Due Date: {{ task.due_date }}</p>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Task: {{ task.title }}</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Priority:</strong> {{ task.priority }}</p>
+            <p class="card-text"><strong>Description:</strong> {{ task.description }}</p>
+            <p class="card-text"><strong>Creation Date:</strong> {{ task.create }}</p>
+            <p class="card-text"><strong>Last updated:</strong> {{ task.update }}</p>
+            <p class="card-text"><strong>Due Date:</strong> {{ task.due_date }}</p>
+            <a href="{% url 'tasks' %}" class="btn btn-secondary">&#8592; Back</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}
