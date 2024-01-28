@@ -22,6 +22,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ task.title }}</h5>
                                     <p class="card-text">{{ task.description }}</p>
+                                    <a href="{% url 'task-update' task.id %}" class="btn btn-primary">Update</a>
                                     <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
