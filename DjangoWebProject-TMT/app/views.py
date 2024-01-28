@@ -103,7 +103,11 @@ class TaskList(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user).order_by('-due_date', '-priority')
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            return Task.objects.filter(user=self.request.user, title__startswith=search_input).order_by('priority')
+        else:
+            return Task.objects.filter(user=self.request.user).order_by('priority')
 
 class TaskBoardView(LoginRequiredMixin, ListView):
     model = Task
