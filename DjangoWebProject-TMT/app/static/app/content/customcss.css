@@ -98,3 +98,24 @@ label {
     border-radius: 5px;
     padding: 5px;
 }
+
+html {
+    font-size: 15px; /* Adjust as needed */
+}
+
+.navbar {
+    z-index: 0; /* Stellt sicher, dass die Navigationsleiste nicht über anderen Elementen liegt */
+
+}
+
+.navbar-brand,
+.nav-link,
+.navbar-text,
+.btn {
+    line-height: 0; /* Reduziert die Zeilenhöhe der Elemente in der Navigationsleiste */
+   padding-bottom: 100px;
+}
+
+.incomplete-tasks-heading {
+    margin-top: 20px; /* Adjust the margin value as needed */
+}

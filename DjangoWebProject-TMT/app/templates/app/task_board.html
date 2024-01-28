@@ -1,0 +1,35 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+{% block content %}
+<script src="{% static 'app/scripts/task_list.js' %}"></script>
+
+
+<div class="container-fluid bg-dark text-white py-3">
+    <a href="{% url 'tasks' %}" class="btn btn-dark text-white>">List View</a>
+    <a href="{% url 'task-board' %}" class="btn btn-dark text-white>">Board View</a>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        {% for status, tasks in tasks_by_status.items %}
+            <div class="col-md-3"> <!-- Change this line -->
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        <h2>{{ status }}</h2>
+                    </div>
+                    <div class="card-body">
+                        {% for task in tasks %}
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ task.title }}</h5>
+                                    <p class="card-text">{{ task.description }}</p>
+                                    <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

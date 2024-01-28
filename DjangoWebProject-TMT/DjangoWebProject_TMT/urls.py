@@ -8,6 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from app.views import TaskBoardView
 
 
 # path to .html files
@@ -42,4 +43,5 @@ urlpatterns = [
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
     path('task-json/', views.task_json, name='task-json'),
+    path('task-board/', TaskBoardView.as_view(), name='task-board'),
 ]

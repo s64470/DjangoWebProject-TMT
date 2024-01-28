@@ -30,6 +30,18 @@ class Task(models.Model):
         choices=PRIORITY_CHOICES,
         default='L',
     )
+    STATUS_CHOICES = [
+        ('TO DO', 'To do'),
+        ('IN PROGRESS', 'In progress'),
+        ('BLOCKED', 'Blocked'),
+        ('DONE', 'Done'),
+    ]
+
+    status = models.CharField(
+        max_length=12,
+        choices=STATUS_CHOICES,
+        default='TO DO',
+    )
 
     def __str__(self):
         return self.title

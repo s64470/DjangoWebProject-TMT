@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
 <script src="{% static 'app/scripts/task_list.js' %}"></script>
+
+<!-- Board View Button -->
+<div class="container-fluid bg-dark text-white py-3">
+    <a href="{% url 'tasks' %}" class="btn btn-dark text-white>">List View</a>
+    <a href="{% url 'task-board' %}" class="btn btn-dark text-white>">Board View</a>
+</div>
 <div class="header-bar">
     <div>
-        <h3 style="margin:0">You have <i>{{ count }}</i> incomplete task{{ count|pluralize:"s" }}.</h3>
+        <h3>You have <i>{{ count }}</i> incomplete task{{ count|pluralize:"s" }}.</h3>
     </div>
-    {% if request.user.is_authenticated %}
-    <!--<p>{{ request.user }}</p>-->
-    <!--<a href="{% url 'logout' %}">Logout</a>-->
-    {% else %}
-    <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
-    {% endif %}
 </div>
 <hr>
 <!-- Search form -->

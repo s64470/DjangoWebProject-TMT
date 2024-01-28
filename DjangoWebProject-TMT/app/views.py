@@ -19,6 +19,7 @@ from django.http import JsonResponse
 from django.core import serializers
 import json
 
+
 # home page
 def home(request):
     """Renders the home page."""
@@ -32,6 +33,7 @@ def home(request):
         }
     )
 
+
 def task_json(request):
     # Query the database for all tasks
     tasks = Task.objects.filter(user=request.user)
@@ -44,6 +46,8 @@ def task_json(request):
 
     # Return the tasks in a JsonResponse
     return JsonResponse(task_list, safe=False)
+
+
 # signup page
 def user_signup(request):
     """Renders the signup page."""
@@ -75,6 +79,14 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
 
+        # Group tasks by status
+        context['tasks_by_status'] = {
+            'TO DO': context['tasks'].filter(status='TO DO'),
+            'IN PROGRESS': context['tasks'].filter(status='IN PROGRESS'),
+            'BLOCKED': context['tasks'].filter(status='BLOCKED'),
+            'DONE': context['tasks'].filter(status='DONE'),
+        }
+
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['tasks'] = context['tasks'].filter(
@@ -92,6 +104,26 @@ class TaskList(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user).order_by('-due_date', '-priority')
+
+
+class TaskBoardView(LoginRequiredMixin, ListView):
+    model = Task
+    context_object_name = 'tasks'
+    template_name = 'app/task_board.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+
+        # Group tasks by status
+        context['tasks_by_status'] = {
+            'TO DO': context['tasks'].filter(status='TO DO'),
+            'IN PROGRESS': context['tasks'].filter(status='IN PROGRESS'),
+            'BLOCKED': context['tasks'].filter(status='BLOCKED'),
+            'DONE': context['tasks'].filter(status='DONE'),
+        }
+
+        return context
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
