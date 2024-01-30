@@ -12,6 +12,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.db import models
 from app.templates.app.forms import RegisterUserForm
 from .models import Task
 from .forms import TaskForm
@@ -105,9 +106,19 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            return Task.objects.filter(user=self.request.user, title__startswith=search_input).order_by('priority')
+            tasks = Task.objects.filter(user=self.request.user, title__startswith=search_input)
         else:
-            return Task.objects.filter(user=self.request.user).order_by('priority')
+            tasks = Task.objects.filter(user=self.request.user)
+
+        # Map the priority choices to numerical values
+        priority_order = {'F': 1, 'H': 2, 'M': 3, 'L': 4}
+        tasks = tasks.annotate(priority_order=models.Case(
+            *[models.When(priority=key, then=value) for key, value in priority_order.items()],
+            default=0,
+            output_field=models.IntegerField(),
+        )).order_by('priority_order', 'priority')
+
+        return tasks
 
 class TaskBoardView(LoginRequiredMixin, ListView):
     model = Task
