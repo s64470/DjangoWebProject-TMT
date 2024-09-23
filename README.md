@@ -4,7 +4,7 @@ A Task Management Tool written in Python using the Django Web Framework
 
 Current functionality
 - User Login
-  - Forgot password implementation
+  - Password recovery implementation
 - User Logout
 - User Signup
 - Create Task
