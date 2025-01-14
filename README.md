@@ -1,5 +1,7 @@
 # DjangoWebProject-TMT
 
+Clausura Project: Object-oriented programming
+----------------------------------------------------------------------------------
 A Task Management Tool written in Python using the Django Web Framework
 
 Current functionality
@@ -14,3 +16,5 @@ Current functionality
 - Taskpriority
 - Task Duedate
 - Notifications
+
+© Copyright: Non-Commercial Education and Research Purposes
