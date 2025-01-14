@@ -1,6 +1,6 @@
 # DjangoWebProject-TMT
 
-Clausura Project: Object-oriented programming
+Exam Project: Object-oriented programming
 ----------------------------------------------------------------------------------
 A Task Management Tool written in Python using the Django Web Framework
 
