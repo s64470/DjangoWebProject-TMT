@@ -17,4 +17,6 @@ Current functionality
 - Task Duedate
 - Notifications
 
+# Email settings need to be configured manually according to your config data provided by your service provider!
+
 © Copyright: Non-Commercial Education and Research Purposes
