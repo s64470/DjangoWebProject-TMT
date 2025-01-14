@@ -30,6 +30,7 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = []
 
 # EMAIL settings
+# Email settings need to be configured manually according to your config data provided by your service provider!
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
